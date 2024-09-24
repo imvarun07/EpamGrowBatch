@@ -1,18 +1,36 @@
 package org.epam.seleniumtests;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class SampleTests {
+    ExtentReports extentReports;
+    ExtentSparkReporter spark;
+
+    @BeforeSuite
+    public void before(){
+        extentReports = new ExtentReports();
+        spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+        extentReports.attachReporter(spark);
+    }
 
     @Test
     public void verifyEpamContactUsPage() {
+        ExtentTest extentTest = extentReports.createTest("EpamContactUs");
+        extentTest.log(Status.INFO,"Launching Chrome Browser");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -26,5 +44,10 @@ public class SampleTests {
         Assert.assertTrue(contactUsLogo.isDisplayed());
         driver.quit();
 
+    }
+
+    @AfterSuite
+    public void after(){
+        extentReports.flush();
     }
 }

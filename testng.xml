@@ -1,11 +1,11 @@
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name = "org.epam.seleniumtests.TestListeners" />
+    </listeners>
     <test verbose="2" preserve-order="true"
           name="Sample Test For Jenkins">
         <classes>
             <class name="org.epam.seleniumtests.SampleTests">
-                <methods>
-                    <include name="tests"/>
-                </methods>
             </class>
         </classes>
     </test>
