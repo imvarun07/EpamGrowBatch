@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BatchScriptEpam:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BatchScriptEpam_jar</output-path>
+    <root id="archive" name="BatchScriptEpam.jar">
+      <element id="module-output" name="BatchScriptEpam" />
+    </root>
+  </artifact>
+</component>
