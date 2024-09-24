@@ -42,7 +42,7 @@ public class SampleTests {
         //Verify Contact Us Logo
         WebElement contactUsLogo = driver.findElement(By.xpath("//span[contains(text(),'Contact Us')]"));
         Assert.assertTrue(contactUsLogo.isDisplayed());
-        extentTest.log(Status.INFO,"Test Success");
+        extentTest.pass("Test Success");
         driver.quit();
 
     }
